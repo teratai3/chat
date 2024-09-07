@@ -1,0 +1,73 @@
+chat_config.index:
+  path: "/admin/config/chat"
+  defaults:
+    _title: "チャットの設定"
+    _form: '\Drupal\chat\Form\Admin\ChatSettingsForm'
+  requirements:
+    _role: "administrator"
+
+chat_rooms.list:
+  path: "/admin/chat_rooms/list"
+  defaults:
+    _controller: '\Drupal\chat\Controller\Admin\ChatRoomController::list'
+    _title: "チャット一覧"
+  requirements:
+    _permission: "administrator"
+
+chat_rooms.edit:
+  path: "/admin/chat_rooms/edit/{id}"
+  defaults:
+    _controller: '\Drupal\chat\Controller\Admin\ChatRoomController::edit'
+    _title: "チャット 編集"
+  requirements:
+    _permission: "administrator"
+    id: \d+
+  options:
+    parameters:
+      id:
+        type: "integer"
+
+
+chat_rooms.status_edit:
+  path: '/admin/chat_rooms/status_edit/{chat_rooms}'
+  defaults:
+    _entity_form: 'chat_rooms.status_edit'
+    _title: 'ステータス変更'
+  requirements:
+    _permission: 'administrator'
+    chat_rooms: \d+
+
+
+chat_rooms.delete:
+  path: '/admin/chat_rooms/delete/{chat_rooms}'
+  defaults:
+    _entity_form: 'chat_rooms.delete'
+    _title: 'チャットルーム削除'
+  requirements:
+    _permission: "administrator"
+    chat_rooms: \d+
+
+
+chat_rooms.front_index:
+  path: "/chat_room"
+  defaults:
+    _controller: '\Drupal\chat\Controller\ChatRoomController::index'
+    _title: "チャット送信"
+  requirements:
+    _permission: "access content"
+
+
+chat.access_token:
+  path: "/chat/api/access_token"
+  defaults:
+    _controller: '\Drupal\chat\Controller\Api\TokenManagementController::access_token'
+  requirements:
+    _permission: "access content"
+
+
+chat.refresh_token:
+  path: "/chat/api/refresh_token"
+  defaults:
+    _controller: '\Drupal\chat\Controller\Api\TokenManagementController::refresh_token'
+  requirements:
+    _permission: "access content"

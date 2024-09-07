@@ -1,0 +1,14 @@
+chat_room_front:
+  css:
+    theme:
+      assets/css/style.css: {}
+  js:
+    assets/js/dist/frontChat.min.js: {}
+    https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js: {}
+chat_room_admin:
+  css:
+    theme:
+      assets/css/chat_edit.css: {}
+  js:
+    assets/js/dist/adminChat.min.js: {}
+    https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js: {}

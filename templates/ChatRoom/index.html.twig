@@ -1,0 +1,28 @@
+<div x-data="chatApp()">
+    <div class="chat-room">
+        <ul id="message-box">
+            <template x-for="message in messages">
+                <li x-bind:class="{
+            'chat-room__chat--me': !message.user_flag && message.is_bot == 0, 
+            }" class="chat-room__chat">
+                    <p class="chat-room__mes" x-bind:class="{
+                    'chat-room__mes--me': !message.user_flag && message.is_bot == 0, 
+                    }" x-text="message.message"></p>
+                    <div class="chat-room__status">
+                        <p x-text="message.created_at"></p>
+                        <template x-if="message.user_name">
+                            <p x-text="message.user_name"></p>
+                        </template>
+                        <template x-if="message.is_bot == 1">
+                            <p>Bot</p>
+                        </template>
+                    </div>
+                </li>
+            </template>
+        </ul>
+    </div>
+    <div class="chat-send">
+        <textarea class="chat-send__message" x-model="messageInput" placeholder="質問を入力してください" id="messageInput" x-on:keydown.ctrl.enter="sendMessage"></textarea>
+        <div class="chat-send__btn" @click="sendMessage">送信</div>
+    </div>
+</div>

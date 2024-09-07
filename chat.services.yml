@@ -1,0 +1,13 @@
+services:
+  chat.middleware.refresh_middleware:
+    class: Drupal\chat\StackMiddleware\ApiMiddleware
+    arguments: ['@chat.rate_limiter']
+    tags:
+       - { name: http_middleware }
+  chat.rate_limiter:
+      class: 'Drupal\chat\Service\RateLimiterService'
+      arguments: ['@cache.default']
+  chat.bot_service:
+    class: 'Drupal\chat\Service\BotService'
+    arguments: []
+  

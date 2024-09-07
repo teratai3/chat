@@ -1,0 +1,79 @@
+// チャットルーム
+.chat-room {
+    padding: 0 20px;
+    .chat-room__chat {
+        display: flex;
+        margin-bottom: 10px;
+        &.chat-room__chat--me {
+            flex-direction: row-reverse;
+        }
+    }
+    .chat-room__mes {
+        max-width: 70%;
+        border-radius: 20px;
+        padding: 10px;
+        background: #000;
+        color: #fff;
+        white-space: pre-wrap;
+        word-wrap:break-word;
+        &.chat-room__mes--me {
+            background: #5ac323;
+            color: #333;
+        }
+    }
+    
+
+    .chat-room__status {
+        color: #aaa;
+        font-size: 11px;
+        align-self: flex-end;
+        margin: 0 5px;
+    }
+}
+
+/* テキストエリア、送信ボタン */
+.chat-send {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    padding: 10px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    .chat-send__message {
+        width: calc(100% - 75px) !important;
+        line-height: 16px;
+        height: 48px;
+        // padding: 14px 6px 0px 6px;
+        padding: 14px 10px 6px;
+        // padding: 7px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: left;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2) inset;
+        box-sizing: border-box;
+        max-height: 200px;
+        min-height: 48px;
+    }
+    .chat-send__btn {
+        width: 72px;
+        height: 48px;
+        font-size: 16px;
+        line-height: 3em;
+        float: right;
+        color: #fff;
+        font-weight: bold;
+        background: #bcbcbc;
+        text-align: center;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+        &:hover {
+            background: #1B9AE4;
+        }
+    }
+}

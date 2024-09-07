@@ -1,0 +1,360 @@
+@charset "UTF-8";
+/************************** reset設定 **************************/
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: "";
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: 700;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+*:after,
+*:before,
+a,
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+button,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+input,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    position: relative;
+    left: 0;
+    right: 0;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.8;
+    color: #333;
+    font-size: 16px;
+    background: #f7f7f7 !important;
+    word-break: break-all;
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    outline: 0;
+    transition: opacity 0.6s ease-in-out;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+    &:not([width]) {
+        max-width: 100%;
+        height: auto;
+    }
+}
+html {
+    // scroll-padding-top: 180px;
+}
+@media screen and (max-width: 767px) {
+    html {
+        scroll-padding-top: 75px;
+    }
+}
+em,
+i {
+    font-style: normal;
+}
+
+button,
+input:not([type="checkbox"]):not([type="radio"]),
+textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #333;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 6px 10px;
+    width: 100%;
+}
+select {
+    border-radius: 0;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-size: 16px;
+    // color: #cccccc;
+    padding: 9px 10px;
+    display: block;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+}
+
+input::-webkit-input-placeholder,
+select::-webkit-input-placeholder {
+    color: #cccccc;
+}
+
+option {
+    outline: 0;
+}
+
+sup {
+    position: relative;
+    top: -0.7em;
+    font-size: 70%;
+}
+
+.visually-hidden{
+    display: none !important;
+}

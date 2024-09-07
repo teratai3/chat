@@ -1,0 +1,98 @@
+@charset "UTF-8";
+.card-style.card-style--pad0 {
+  padding: 0;
+}
+
+.chat-room {
+  height: 500px;
+  overflow-y: scroll;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.chat-room > ul {
+  margin: 0;
+}
+.chat-room .chat-room__chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+.chat-room .chat-room__chat.chat-room__chat--me {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+.chat-room .chat-room__mes {
+  max-width: 70%;
+  border-radius: 20px;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+.chat-room .chat-room__mes.chat-room__mes--me {
+  background: #5ac323;
+  color: #333;
+}
+.chat-room .chat-room__status {
+  color: #aaa;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0 5px;
+}
+.chat-room .chat-room__status > p {
+  font-size: 11px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* テキストエリア、送信ボタン */
+.chat-send {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.chat-send .chat-send__message {
+  width: calc(100% - 75px) !important;
+  line-height: 16px;
+  height: 48px;
+  padding: 14px 10px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+  -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-height: 200px;
+  min-height: 48px;
+}
+.chat-send .chat-send__btn {
+  width: 72px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 3em;
+  float: right;
+  color: #fff;
+  font-weight: bold;
+  background: #bcbcbc;
+  text-align: center;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+}
+.chat-send .chat-send__btn:hover {
+  background: #0036b1;
+}

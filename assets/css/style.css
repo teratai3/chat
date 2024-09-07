@@ -1,0 +1,488 @@
+@charset "UTF-8";
+/************************** reset設定 **************************/
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: 700;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+*:after,
+*:before,
+a,
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+button,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+input,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  position: relative;
+  left: 0;
+  right: 0;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.8;
+  color: #333;
+  font-size: 16px;
+  background: #f7f7f7 !important;
+  word-break: break-all;
+}
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  outline: 0;
+  -webkit-transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+img:not([width]) {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+}
+em,
+i {
+  font-style: normal;
+}
+
+button,
+input:not([type=checkbox]):not([type=radio]),
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #333;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 6px 10px;
+  width: 100%;
+}
+
+select {
+  border-radius: 0;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 16px;
+  padding: 9px 10px;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 30px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+input::-webkit-input-placeholder,
+select::-webkit-input-placeholder {
+  color: #cccccc;
+}
+
+option {
+  outline: 0;
+}
+
+sup {
+  position: relative;
+  top: -0.7em;
+  font-size: 70%;
+}
+
+.visually-hidden {
+  display: none !important;
+}
+
+.header {
+  padding: 15px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #1B9AE4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.header .header__logo {
+  margin: 0;
+}
+.header .header__logo img {
+  max-width: auto;
+  height: 50px;
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+.header .header__back-link a {
+  color: #fff;
+}
+
+.chat-room {
+  padding: 0 20px;
+}
+.chat-room .chat-room__chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+.chat-room .chat-room__chat.chat-room__chat--me {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+.chat-room .chat-room__mes {
+  max-width: 70%;
+  border-radius: 20px;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.chat-room .chat-room__mes.chat-room__mes--me {
+  background: #5ac323;
+  color: #333;
+}
+.chat-room .chat-room__status {
+  color: #aaa;
+  font-size: 11px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0 5px;
+}
+
+/* テキストエリア、送信ボタン */
+.chat-send {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  padding: 10px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.chat-send .chat-send__message {
+  width: calc(100% - 75px) !important;
+  line-height: 16px;
+  height: 48px;
+  padding: 14px 10px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+  -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-height: 200px;
+  min-height: 48px;
+}
+.chat-send .chat-send__btn {
+  width: 72px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 3em;
+  float: right;
+  color: #fff;
+  font-weight: bold;
+  background: #bcbcbc;
+  text-align: center;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+}
+.chat-send .chat-send__btn:hover {
+  background: #1B9AE4;
+}
+
+.main-wrapper {
+  margin: 100px 0 85px;
+}

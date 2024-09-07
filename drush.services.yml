@@ -1,0 +1,9 @@
+services:
+  chat.server_commands:
+    class: Drupal\chat\Command\ChatServerCommands
+    tags:
+      - { name: 'drush.command' }
+  chat.chat_commands:
+    class: Drupal\chat\Command\ChatCommands
+    tags:
+      - { name: 'drush.command' }

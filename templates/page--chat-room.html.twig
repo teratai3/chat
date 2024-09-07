@@ -1,0 +1,14 @@
+<header class="header">
+    <h1 class="header__logo">
+        <a href="{{ path('<front>') }}"><img src="{{ base_path ~ directory }}/logo.svg" alt="{{ site_name }}"></a>
+    </h1>
+
+    <p class="header__back-link">
+        <a href="{{ path('<front>') }}">＜ 戻る</a>
+    </p>
+</header>
+
+
+<main class="main-wrapper">
+    {{ page.content }}
+</main>

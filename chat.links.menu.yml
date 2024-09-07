@@ -1,0 +1,16 @@
+chat_rooms.list:
+  title: 'チャット一覧'
+  description: 'チャット一覧ページ'
+  route_name: chat_rooms.list
+  weight: 1
+  parent: system.admin
+  options:
+    attributes:
+      class:
+        - 'toolbar-icon-entity-user-collection'
+
+chat_config.index:
+  title: 'チャットの設定'
+  description: 'チャットの設定'
+  parent: system.admin_config_system
+  route_name: chat_config.index

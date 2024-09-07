@@ -1,0 +1,23 @@
+.header{
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    background: #1B9AE4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    .header__logo{
+        margin: 0;
+        img{
+            max-width: auto;
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+    }
+    .header__back-link a{
+        color: #fff;
+    }
+}

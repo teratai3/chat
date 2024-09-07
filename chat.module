@@ -1,0 +1,162 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\chat\Config\ChatConfig;
+
+/**
+ * Implements hook_install().
+ */
+function chat_install()
+{
+  // OpenSSLでランダムなキーとIVを生成
+  $key = ChatConfig::generateKey(16); // 16バイトのランダムキーを生成
+  $iv = ChatConfig::generateKey(16); // 16バイトのランダムIVを生成
+  $jwt_secret_key = ChatConfig::generateKey(32);
+
+  // 生成したキーとIVをconfigに保存
+  \Drupal::configFactory()
+    ->getEditable('chat.settings')
+    ->set('openssl_key', $key)
+    ->set('openssl_iv', $iv)
+    ->set('jwt_secret_key', $jwt_secret_key)
+    ->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function chat_uninstall()
+{
+  // 'chat.settings' の設定データを削除
+  \Drupal::configFactory()->getEditable('chat.settings')->delete();
+}
+
+/**
+ * Implements hook_theme().
+ */
+function chat_theme()
+{
+  return [
+    'chat_room_front_index' => [
+      'variables' => [
+        'chat_room' => null,
+      ],
+      'template' => 'ChatRoom/index',
+    ],
+    'chat_room_admin_edit' => [
+      'variables' => [
+        'chat_room' => null,
+      ],
+      'template' => 'Admin/ChatRoom/edit',
+    ],
+  ];
+}
+
+
+
+/**
+ * Implements hook_entity_presave().
+ * チャットメッセージが保存される前にメッセージ番号を自動的に設定
+ */
+function chat_entity_presave(EntityInterface $entity)
+{
+  // チャットメッセージエンティティにのみ適用
+  if ($entity->getEntityTypeId() === 'chat_talks' && $entity->isNew()) {
+    // 現在のチャットルームIDを取得
+    $chat_room_id = $entity->get('chat_room_id')->target_id;
+
+    // 同じチャットルーム内の最新のメッセージ番号を取得
+    $query = \Drupal::entityQuery('chat_talks')->condition('chat_room_id', $chat_room_id)->sort('message_number', 'DESC')->range(0, 1)->accessCheck(false);
+
+    $latest_message_id = $query->execute();
+    $latest_message_number = 0;
+
+    if (!empty($latest_message_id)) {
+      $latest_message = \Drupal::entityTypeManager()->getStorage('chat_talks')->load(reset($latest_message_id));
+      $latest_message_number = $latest_message->get('message_number')->value;
+    }
+
+    // 新しいメッセージ番号を計算
+    $next_message_number = $latest_message_number + 1;
+
+    // 計算したメッセージ番号をエンティティに設定
+    $entity->set('message_number', $next_message_number);
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function chat_entity_delete(EntityInterface $entity)
+{
+  if ($entity->getEntityTypeId() === 'chat_rooms') {
+    // on deleteが出来ないためフックから親エンティティが削除されたら、子エンティティも削除する
+    $related_talks = \Drupal::entityTypeManager()->getStorage('chat_talks')->loadByProperties(['chat_room_id' => $entity->id()]);
+    if (!empty($related_talks)) {
+      foreach ($related_talks as $talk) {
+        $talk->delete();
+      }
+    }
+  }
+}
+
+
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function chat_theme_registry_alter(&$theme_registry)
+{
+  // モジュールのテンプレートパスを取得
+  $path = \Drupal::service('extension.list.module')->getPath('chat');
+
+  // テーマにテンプレートが存在するか確認
+  $theme = \Drupal::theme()->getActiveTheme();
+  if (file_exists($theme->getPath() . '/templates/page--chat-room.html.twig')) {
+    // テーマのテンプレートを使用
+    $path = \Drupal::service('extension.list.theme')->getPath($theme->getName());
+  }
+
+  // テーマレジストリに 'page__chat_room' テンプレートを追加
+  $theme_registry['page__chat_room'] = [
+    'template' => 'page--chat-room',
+    'path' => $path . '/templates',
+    'render element' => 'page',
+    'type' => 'base_theme_engine',
+  ];
+}
+
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function chat_theme_suggestions_alter(array &$suggestions, array $variables, $hook)
+{
+  if ($hook === 'page') {
+    // 特定のパス '/empty-page' でカスタムテンプレートを使用する。
+    $current_path = \Drupal::service('path.current')->getPath();
+    if ($current_path === '/chat_room') {
+      // サジェスチョンを空にして、デフォルトのテンプレートも使わないようにする
+      $suggestions[] = "page__chat_room";
+    }
+  }
+}
+
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function chat_page_attachments_alter(array &$attachments)
+{
+  // 現在のパスが '/chat_room' ならばCSSを排除
+  $current_path = \Drupal::service('path.current')->getPath();
+  if ($current_path === '/chat_room') {
+    // CSSファイルを排除する
+    // if (isset($attachments['#attached']['library'])) {
+    //   foreach ($attachments['#attached']['library'] as $key => $library) {
+    //     unset($attachments['#attached']['library'][$key]);
+    //   }
+    // }
+    $attachments['#attached']['library'] = [];
+  }
+}

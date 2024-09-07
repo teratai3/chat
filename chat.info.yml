@@ -1,0 +1,9 @@
+name: 'chat'
+type: module
+description: 'リアルタイムチャット機能を提供します。'
+package: Custom
+core_version_requirement: ^10 || ^11
+
+# Required libraries:
+# - drush/drush: コマンドを実装するためのライブラリ
+# - cboden/ratchet: 0.4.4 WebSocketを実装するためのライブラリ
